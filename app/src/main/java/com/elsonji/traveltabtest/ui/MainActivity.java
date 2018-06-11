@@ -43,10 +43,8 @@ public class MainActivity extends AppCompatActivity implements RxViewDispatch {
     String mPassword;
     List<ScanResult> mNetworkList;
     WifiConfiguration mWifiConfig;
-
     PasswordStore mPasswordStore;
     SSIDStore mSSIDStore;
-
     CoordinatorLayout mCoordinatorLayout;
 
     @Override
@@ -65,7 +63,6 @@ public class MainActivity extends AppCompatActivity implements RxViewDispatch {
         }
 
         WifiApp.get(this).getActionCreator().getSSID();
-
 
         mWifiConfig = new WifiConfiguration();
 
@@ -92,7 +89,6 @@ public class MainActivity extends AppCompatActivity implements RxViewDispatch {
             mWifiManager.setWifiEnabled(true);
             connectToWifi();
         }
-
     }
 
     private boolean isHexString(String s) {
@@ -113,11 +109,9 @@ public class MainActivity extends AppCompatActivity implements RxViewDispatch {
 
         //getSSID() returns strings with double quotations, so they have to be removed for string comparison.
         return wifiInfo.getSSID().replace("\"", "").trim();
-
     }
 
     private void connectToWifi() {
-
         if (mNetworkList != null) {
             for (ScanResult network : mNetworkList) {
                 if (mSSID.equals(network.SSID)) {
